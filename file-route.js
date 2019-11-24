@@ -2,9 +2,6 @@ const moment = require('moment');
 const AWS = require('aws-sdk');
 const fs = require('fs');
 
-AWS.config.update({ region: 'sa-east-1' });
-
-const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
 
 async function getFileStream(file) {
   return new Promise((resolve) => {
@@ -20,6 +17,9 @@ async function getFileStream(file) {
 }
 
 module.exports = async function fileServerRoute(req, res) {
+  AWS.config.update({ region: 'sa-east-1' });
+  const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
+
   const { file } = req;
   const logs = [];
 
