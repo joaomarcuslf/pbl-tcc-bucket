@@ -1,18 +1,20 @@
 module.exports = {
-  root: true,
   env: {
-    node: true
+    commonjs: true,
+    es6: true,
+    node: true,
   },
-  plugins: ["prettier"],
-  rules: {
-    "prettier/prettier": "error",
-    "no-prototype-builtins": "off",
-    "no-useless-escape": "off"
+  extends: [
+    'airbnb-base',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    parser: "babel-eslint"
+    ecmaVersion: 2018,
   },
-  env: {
-    es6: true
-  }
+  rules: {
+    "no-console": "off"
+  },
 };
